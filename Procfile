@@ -1,1 +1,1 @@
-web: gunicorn django_natours.wsgi
+web: gunicorn natours.wsgi
