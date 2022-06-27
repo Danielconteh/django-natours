@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5nq@1e8v+#iw6mtj21^b8lw60t&%9@-upt6s70ef&^zgc5k()^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ['localhost']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://django-natour.herokuapp.com/']
 
 
 # Application definition
