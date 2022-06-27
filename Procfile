@@ -1,1 +1,3 @@
-web: gunicorn natours.wsgi
+web: gunicorn natours.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
