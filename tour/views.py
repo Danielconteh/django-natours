@@ -4,40 +4,19 @@ from django.core.exceptions import ObjectDoesNotExist
 import json
 from django.conf import settings
 from django.dispatch import receiver
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views import View
 from .models import Tour, Images, User_Image, Review
 import datetime
 import random
-# from allauth.socialaccount.signals import pre_social_login
-from allauth.account.signals import user_signed_up
-from django.contrib.auth.models import User
+# from allauth.account.signals import user_signed_up
+# from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt 
 import stripe
 from django.contrib import messages
 from django.db.models import Avg
 
 
-
-
-
-# @receiver(user_signed_up)
-# def link_to_local_user(sender, request, user, **kwargs):    
-#     image = kwargs['sociallogin'].account.extra_data['picture']
-#     email_address =  kwargs['sociallogin'].account.extra_data['email']
-    
-#     user = User.objects.filter(email=email_address)
-   
-#     if user.exists():
-#         user_img = User_Image.objects.filter(user__email = email_address)
-                
-#         if(user_img.exists() and user_img[0].image):return 
-        
-#         user_img = User_Image(user=user[0], image=image)
-#         user_img.save()
-
-      
 
 
 
