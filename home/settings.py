@@ -170,10 +170,16 @@ SOCIALACCOUNT_PROVIDERS = {
             'profile',
             'email',
         ],
+        'APP': {
+            'client_id': '1045610393790-67euil14f1nc9acfdcn38i86lo9toegf.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        },
      
         'AUTH_PARAMS': {
             'access_type': 'online',
-        }
+        },
+         
     }
 }
 
