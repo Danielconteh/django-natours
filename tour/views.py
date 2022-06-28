@@ -18,10 +18,6 @@ import stripe
 from django.contrib import messages
 from django.db.models import Avg
 
-
-
-
-
 @receiver(user_signed_up)
 def link_to_local_user(sender, request, user, **kwargs):    
     image = kwargs['sociallogin'].account.extra_data['picture']

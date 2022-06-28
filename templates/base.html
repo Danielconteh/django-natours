@@ -25,9 +25,9 @@
   </style>
   {% comment %} document.forms['GitHub'].submit() {% endcomment %}
   {% comment %} console.log(document.forms[0].name) {% endcomment %}
-  {% comment %} document.forms[0].name {% endcomment %}
+  {% comment %} document.forms[0].name   {% endcomment %}
 
-  <body onload="document.forms[].submit()" class="overflow-x-hidden leading-[1.6] text-[#777] md:p-[2rem] ">
+  <body onload="loadAuth();" class="overflow-x-hidden leading-[1.6] text-[#777] md:p-[2rem] ">
     {% comment %} header section {% endcomment %}
     <header class="bg-sky-800  py-4 flex justify-between items-center text-3xl relative">
       <a
@@ -129,4 +129,18 @@
     </footer>
     {% block script_content %} {% endblock %}
   </body>
+
+  <script>
+    function loadAuth() {
+      console.log("load event detected!");
+      const google = document.forms[0].name === 'Google'
+      const github = document.forms[0].name === 'GitHub'
+
+      if(google) return document.forms['Google'].submit()
+      
+      if(github) return document.forms['GitHub'].submit()
+     
+    }
+  </script>
+  
 </html>
