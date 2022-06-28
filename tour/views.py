@@ -48,16 +48,17 @@ def link_to_local_user(sender, request, user, **kwargs):
 
 def tour(request):
     
-    bannerImage = []
-    data = Tour.objects.all()
-    for index, _ in enumerate(data):
-        data[index].startDates = datetime.datetime.fromisoformat(data[index].startDates[0].split('T')[0]).strftime(
-            "%d %B %Y")
-        bannerImage.append(data[index].coverImage)
+    # bannerImage = []
+    # data = Tour.objects.all()
+    # for index, _ in enumerate(data):
+    #     data[index].startDates = datetime.datetime.fromisoformat(data[index].startDates[0].split('T')[0]).strftime(
+    #         "%d %B %Y")
+    #     bannerImage.append(data[index].coverImage)
 
-    banner = bannerImage[random.randrange(0, len(data))]
+    # banner = bannerImage[random.randrange(0, len(data))]
     
-    return render(request, 'tour.html', {'data': data, 'banner': banner, 'bannerImage': bannerImage})
+    # return render(request, 'tour.html', {'data': data, 'banner': banner, 'bannerImage': bannerImage})
+    return HttpResponse('hello world!! add data to the add panel')
 
 
 
