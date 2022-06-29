@@ -23,13 +23,10 @@
 
 
   </style>
-  {% comment %} document.forms['GitHub'].submit() {% endcomment %}
-  {% comment %} console.log(document.forms[0].name) {% endcomment %}
-  {% comment %} document.forms[0].name   {% endcomment %}
-
+  
   <body onload="loadAuth();" class="overflow-x-hidden leading-[1.6] text-[#777] md:p-[2rem] ">
     {% comment %} header section {% endcomment %}
-    <header class="bg-sky-800  py-4 flex justify-between items-center text-3xl relative">
+    <header class="bg-sky-800  py-4 flex justify-between items-center lg:text-3xl relative md:text-2xl" style="width:100%;">
       <a
         href="/"
         class="ml-3 p-1.5 text-sky-200 no-underline uppercase tracking-widest md:tracking-wide"
@@ -86,7 +83,7 @@
     {%endblock %} {% block content %}{% endblock %}
 
     <footer
-      class="bg-sky-800 p-[4rem] mt-4 mb-0  grid md:grid-cols-[auto,auto] gap-2 justify-center md:justify-between text-2xl text-sky-200 sm:px-[1rem]"
+      class="bg-sky-800 p-[4rem] mt-4 mb-0  grid md:grid-cols-[auto,auto] gap-2 justify-center md:justify-between text-sky-200 sm:px-[1rem]"
     >
     {{ user.get_full_name }}
     {% comment %} {{ user.get_full_name }}
@@ -95,12 +92,12 @@
     
       <div class="row-start-1 row-end-3 self-center text-center ml-6 md:text-left ml-0">
         <img src="/img/logo-green.png" alt="Django-Natours" />
-        <span class="tracking-widest capitalize hidden md:block"
+        <span class="tracking-widest capitalize hidden md:block md:text-2xl"
           >built using django</span
         >
       </div>
       <ul
-        class="list-none mr-8 flex justify-center flex-col sm:text-xl md:justify-end md:flex-row mr-0"
+        class="list-none mr-8 flex justify-center flex-col md:text-2xl md:justify-end md:flex-row mr-0"
       >
         <li class="ml-6 text-center py-4 md:py-0">
           <a href="#">About us</a>
@@ -118,11 +115,11 @@
           <a href="#">Contact</a>
         </li>
       </ul>
-      <p id="date" class="justify-self-end mr-8 md:mr-0">
+      <p id="date" class="justify-self-end mr-8 md:mr-0 md:text-2xl md:center">
         &copy; {% now "Y" as current_year %} Copyright {{ current_year }} by
         Daniel Conteh.
         <br />
-        <span class="tracking-widest capitalize block text-center md:hidden"
+        <span class="mt-4 tracking-widest capitalize block text-center md:hidden center md:text-2xl"
           >built using django</span
         >
       </p>

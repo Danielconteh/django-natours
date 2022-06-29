@@ -11,18 +11,18 @@
 <main class="flex items-center justify-center" style="min-height:80vh;">
 
 
-<div class="bg-gradient-to-r from-purple-500 to-pink-500 shadow-xl text-white flex items-center justify-center flex-col" style="padding:5rem 2rem;">
+<div class="p-6 bg-gradient-to-r from-purple-500 to-pink-500 shadow-xl text-white flex items-center justify-center flex-col" style="padding:5rem 1rem;">
 
 <!--<h1>{% trans "Sign In" %}</h1>-->
 
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
-<h2 class="text-2xl capitalize tracking-widest">{% blocktrans with site.name as site_name %}sign in to django-natours to book a tour{% endblocktrans %}</h2>
+<h2 class="text-xl md:text-2xl capitalize tracking-widest">{% blocktrans with site.name as site_name %}sign in to django-natours to book a tour{% endblocktrans %}</h2>
 
 <div class="socialaccount_ballot">
 
-  <ul class="flex flex-col text-2xl p-8 tracking-wide socialaccount_providers">
+  <ul class="flex flex-col text-xl md:text-2xl p-6 tracking-wide socialaccount_providers">
     {% comment %} {% include "socialaccount/snippets/provider_list.html" with process="login" %} {% endcomment %}
 
     <a class="mb-6" href="{% provider_login_url 'google' %}">Login With Google</a>

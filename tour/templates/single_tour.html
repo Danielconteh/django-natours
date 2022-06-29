@@ -13,16 +13,14 @@
 
 {% endblock%}
 
-{% comment %} {% block script_content %}
- 
-{% endblock%} {% endcomment %}
+
 
 
 
 
 {% block banner_content %}
 <!-- BANNER CONTAINER-->
-  <div id='img' class="h-[55vh]  lg:h-[80vh] md:h-[60vh] relative " style="clip-path: polygon(0 0, 100% 0%, 100% 85%, 0% 100%);" style="z-index:-1;">
+  <div id='img' class="single_banner flex items-center justify-center">
 
 
 
@@ -36,10 +34,10 @@
      <!-- END OVERLAYER-->
 
       <!--TOP OVER CONTEN WITH TOUR NAME AND ETC...-->
-    <div class="text-2xl relative flex flex-col justify-center      items-center top-[28%]">
+    <div class="text-2xl relative flex flex-col justify-center items-center">
 
 
-     <div class="relative w-[170px] text-center" >
+     <div class="relative w-[170px]" >
        <span class="text-4xl leading-[3.5rem] text-white py-4 px-6  uppercase bg-gradient-to-r from-purple-500 to-pink-500 box-decoration-clone ">
         {{data.name}}
        </span>

@@ -180,7 +180,23 @@ SOCIALACCOUNT_PROVIDERS = {
             'access_type': 'online',
         },
          
-    }
+    },
+    #  'google': {
+    #     'SCOPE': [
+    #         'profile',
+    #         'email',
+    #     ],
+    #     'APP': {
+    #         'client_id': 'b57051e7c7982b2db3a2',
+    #         'secret': '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',
+    #         'key': ''
+    #     },
+     
+    #     'AUTH_PARAMS': {
+    #         'access_type': 'online',
+    #     },
+         
+    # }
 }
 
 ACCOUNT_EMAIL_REQUIRED = True

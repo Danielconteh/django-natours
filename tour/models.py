@@ -91,8 +91,9 @@ class Review(models.Model):
 
 
 # WORKING API KEY => SECRET
-# client_id = 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
-# secret_key = 1045610393790-67euil14f1nc9acfdcn38i86lo9toegf.apps.googleusercontent.com
+# client_id = 1045610393790-67euil14f1nc9acfdcn38i86lo9toegf.apps.googleusercontent.com
+# 
+# secret_key = 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
 
 
 
