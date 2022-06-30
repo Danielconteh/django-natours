@@ -35,15 +35,7 @@ body {
 
 /* ==========================
 ===== */
-.banner_IMG{
-}
-.single_banner{
-  min-height: 75vh;
-  z-index: -1;
-  clip-path: polygon(0 0, 100% 0%, 100% 85%, 0% 100%);
-  z-index:-1;
-  
-}
+
 
 /* @media screen and (max-width: 50em) { h-[55vh]  lg:h-[80vh] md:h-[60vh]
   .banner_IMG{
@@ -52,9 +44,7 @@ body {
   
 } */
 
-
-
-.tour_info_guide_header{
+.tour_info_guide_header {
   @apply text-4xl pb-8 uppercase bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent;
 }
 

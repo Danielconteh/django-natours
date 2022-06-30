@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-5nq@1e8v+#iw6mtj21^b8lw60t&%9@-upt6s70ef&^zgc5k()^
 DEBUG = False
 
 ALLOWED_HOSTS = ['django-natour.herokuapp.com']
-# ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = []
 
 
 # Application definition

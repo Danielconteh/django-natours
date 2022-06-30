@@ -98,7 +98,6 @@ def single_tour(request, tour_slug):
         
     # FILTER A TOUR GUIDE
     tour_guide = Tour_Guide.objects.all()[:3]
-    print(tour_guide)      
         
        
     return render(request, 'single_tour.html',
