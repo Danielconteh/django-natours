@@ -1178,10 +1178,6 @@ video {
   padding-right: 2rem;
 }
 
-.pt-8 {
-  padding-top: 2rem;
-}
-
 .pr-1 {
   padding-right: 0.25rem;
 }
@@ -1196,6 +1192,10 @@ video {
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-center {
@@ -1294,13 +1294,13 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+.text-transparent {
+  color: transparent;
+}
+
 .text-\[\#999\] {
   --tw-text-opacity: 1;
   color: rgb(153 153 153 / var(--tw-text-opacity));
-}
-
-.text-transparent {
-  color: transparent;
 }
 
 .text-slate-500 {

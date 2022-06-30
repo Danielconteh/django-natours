@@ -11,8 +11,8 @@
     <div class="absolute w-full h-full opacity-70 bg-gradient-to-r from-purple-500 to-pink-500">&nbsp;</div>
 
 
-    <div class="relative flex justify-center items-center text-center h-full text-4xl leading-[3.5rem] text-white capitalize" >
-      welcome to DjangoNatours
+    <div class="relative flex justify-center items-center text-center h-full text-4xl leading-[3.5rem] text-white capitalize tracking-widest" style="font-weight:bold; text-shadow: 2px 2px 4px #000000;" >
+      welcome to Django Natours
     </div>
 
   </div>
@@ -20,14 +20,15 @@
 {% endblock %}
 
 {% block content %}
+<div class="text-4xl text-center py-12 tracking-widest uppercase bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent " style="font-weight:bold;">All Tours</div>
 
 <div
-  style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom:3rem;"
-  class="grid gap-x-4 gap-y-4 pt-8 px-2 md:gap-x-8 md:px-8 lg:gap-x-[6rem] lg:px-[12rem] mx-auto "
+  style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom:3rem; padding-top:1.5rem;"
+  class="grid gap-x-4 gap-y-4 px-2 md:gap-x-8 md:px-8 lg:gap-x-[6rem] lg:px-[12rem] mx-auto  py-5"
 >
 
 {% for tour in data %}
-   <div class="flex flex-col rounded overflow-hidden bg-white transition-all shadow-xl ">
+   <div class="flex flex-col rounded overflow-hidden bg-white transition-all shadow-xl">
 
    <!-- header part section on -->
     <div class="bg-[#fff] relative">
