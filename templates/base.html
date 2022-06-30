@@ -7,6 +7,9 @@
     {% block meta %}{% endblock%}
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <title>{% block title %}{% endblock%}</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+  integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+  crossorigin=""/>
   </head>
 
   <style>
@@ -30,27 +33,39 @@
       <a
         href="/"
         class="ml-3 p-1.5 text-sky-200 no-underline uppercase tracking-widest md:tracking-wide"
-       style="margin-left:1rem;" >All tours</a
+       style="margin-left:1rem; font-weight:bold;" >All tours</a
       >
       <a class="text-sky-200 p-1.5 hidden md:block" href="/">logo</a>
 
 
       {% if user.is_authenticated %}
       <div class="user_img flex items-center text-sky-200 relative" style="cursor:pointer;" >
-        <div class="mr-4">  
+        <div class="mr-4" style="font-weight:bold;">  
           {% comment %} {{ user.user_image.image|default_if_none:user.user_image.photo }} {% endcomment %}
- 
-        {% if user.user_image.image %} 
-        <img class="rounded-full" src="{{ user.user_image.image }}" alt="{{ user.first_name }}" width="35" height="10"> 
-        {% elif user.user_image.photo %}
-        <img class="rounded-full" src="{{ user.user_image.photo }}" alt="{{ user.first_name }}" width="35" height="10"> 
+
+
+        {% for account in user.socialaccount_set.all %}
+
+
+        {% if account.get_avatar_url %} 
+        <img class="rounded-full" src="{{ account.get_avatar_url }}" alt="{{  account.extra_data.first_name  }}" width="35" height="10"> 
+        {% elif account.get_picture %}
+        <img class="rounded-full" src="{{ account.get_picture }}" alt="{{  account.extra_data.first_name }}" width="35" height="10"> 
         {% else %}
         <img class="rounded-full" src="https://api.iconify.design/bi/person-circle.svg?color=%23bae6fd" alt="" srcset=""  width="30" height="10">
         {% endif %}
 
         </div>
+        {% if  account.extra_data.first_name %}
+        <p class="tracking-widest md:tracking-wide mr-8">{{ account.extra_data.first_name|capfirst}}</p>
         
-      <p class="tracking-widest md:tracking-wide mr-8">{{ user.first_name|capfirst}}</p>
+        {% else %}
+        <p class="tracking-widest md:tracking-wide mr-8">{{ user|capfirst}}</p>
+
+        {% endif %}
+
+
+        {% endfor %} 
 
 
 
@@ -85,10 +100,7 @@
     <footer
       class="bg-sky-800 p-[4rem] mt-4 mb-0  grid md:grid-cols-[auto,auto] gap-2 justify-center md:justify-between text-sky-200 sm:px-[1rem]"
     >
-    {{ user.get_full_name }}
-    {% comment %} {{ user.get_full_name }}
 
-    {{ user.email }} {% endcomment %}
     
       <div class="row-start-1 row-end-3 self-center text-center ml-6 md:text-left ml-0">
         <img src="/img/logo-green.png" alt="Django-Natours" />
@@ -127,9 +139,12 @@
     {% block script_content %} {% endblock %}
   </body>
 
+    
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+  crossorigin=""></script>
+
   <script>
     function loadAuth() {
-      console.log("load event detected!");
       const google = document.forms[0].name === 'Google'
       const github = document.forms[0].name === 'GitHub'
 

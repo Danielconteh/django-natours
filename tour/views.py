@@ -7,33 +7,15 @@ from django.dispatch import receiver
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 # from django.views import View
-from .models import Tour, Images, User_Image, Review
+from .models import Tour, Images, Review, Tour_Guide
 import datetime
 import random
-# from allauth.socialaccount.signals import pre_social_login
-from allauth.account.signals import user_signed_up
+#########################################################
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt 
 import stripe
 from django.contrib import messages
 from django.db.models import Avg
-
-@receiver(user_signed_up)
-def link_to_local_user(sender, request, user, **kwargs):    
-    image = kwargs['sociallogin'].account.extra_data['picture']
-    email_address =  kwargs['sociallogin'].account.extra_data['email']
-    
-    user = User.objects.filter(email=email_address)
-   
-    if user.exists():
-        user_img = User_Image.objects.filter(user__email = email_address)
-                
-        if(user_img.exists() and user_img[0].image):return 
-        
-        user_img = User_Image(user=user[0], image=image)
-        user_img.save()
-
-      
 
 
 
@@ -92,18 +74,19 @@ def single_tour(request, tour_slug):
     
     # ADD REVIEWS TO TAST!
     review_tour = Review.objects.filter(tour=tour_slug)
+    print("==========================")
     if review_tour.exists():
         for index,_ in enumerate(review_tour):
-            review_user = User_Image.objects.filter(user__email=review_tour[index].user) 
-            
+            review_user = User.objects.filter(email=review_tour[index].user) 
             review.append({"review_text":review_tour[index].review, 
                            'rating':float(review_tour[index].rating),
-                           'image': review_user[0].image or review_user[0].photo ,
-                           'name':review_user[0].user.first_name+ ' ' + review_user[0].user.last_name,
+                           'image':  review_tour[index].user_img,
+                           'name':review_user[0].first_name and review_user[0].first_name + ' ' + review_user[0].last_name or review_user[0],
                           })
            
     # updating data ratingAvg for any single tour  [no rating yet!]
      # updating data ratingAvg for any single tour  [no rating yet!]
+    print()
     if type(review_tour.aggregate(Avg('rating'))['rating__avg']) is type(None): 
         data.ratingAvg = 0
         data.save()
@@ -111,13 +94,17 @@ def single_tour(request, tour_slug):
     else: 
         data.ratingAvg = float(review_tour.aggregate(Avg('rating'))['rating__avg'])
         data.save();
-      
+        
+        
+    # FILTER A TOUR GUIDE
+    tour_guide = Tour_Guide.objects.all()[:3]
+    print(tour_guide)      
         
        
     return render(request, 'single_tour.html',
                   {'data': data, 'next_date': next_date, 'imgs': imgs, 'coords': coords, 'locationDes': locationDes,
                    'locationCoords': locationCoords, 'locationDay': json.dumps(locationDay),
-                   'startLocation': startLocation, 'par_description': par_description, 'review':review})
+                   'startLocation': startLocation, 'par_description': par_description, 'review':review, 'tour_guide':tour_guide})
 
 
 
@@ -134,11 +121,18 @@ def Review_model(request, review_slug):
     if not request.POST['review']:
         messages.warning(request, 'please write something!')
         return redirect('/{}'.format(request.build_absolute_uri().split('/')[-1]))
+    
+    
+    if not request.POST['rating']:
+        messages.warning(request, 'please rate this tour!')
+        return redirect('/{}'.format(request.build_absolute_uri().split('/')[-1]))
+        
+ 
 
     rating = request.POST['rating'] or 0
     print(rating)
     data = Review(tour=review_slug,user=request.user.email,review=request.POST['review'],
-                  rating=float(rating),time_posted=datetime.datetime.now())
+                  rating=float(rating),user_img=request.user.socialaccount_set.all()[0].extra_data['avatar_url'], time_posted=datetime.datetime.now())
     try:
         data.save()
     except IntegrityError:

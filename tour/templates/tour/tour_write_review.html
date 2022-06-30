@@ -3,8 +3,17 @@
 
       <!-- {% if messages %} -->
         <div id="scroll-container">
-          {% for message in messages %}
-          <div id="message" {% if message.tags %} data-message="{{ message }}" class="pop_up text-center p-8 mb-6 text-4xl bg-gradient-to-r from-purple-500 to-pink-500 capitalize"{% endif %}>{{ message }}</div>
+          {% for message in messages %} 
+
+            {% if message.tags == 'warning' %}
+            <div id="message" data-message="{{ message }}" class="pop_up text-center p-8 mb-6 text-4xl bg-gradient-to-r from-purple-500 to-pink-500 capitalize">{{ message }}</div> 
+            {% endif %}
+
+
+            {% if message.tags == 'error' %}
+            <div id="message" data-message="{{ message }}" class="pop_up text-center p-8 mb-6 text-4xl bg-gradient-to-r from-purple-500 to-pink-500 capitalize">{{ message }}</div> 
+            {% endif %}
+
           {% endfor %}
         </div>
       <!-- {% endif %} -->

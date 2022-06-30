@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5nq@1e8v+#iw6mtj21^b8lw60t&%9@-upt6s70ef&^zgc5k()^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ['django-natour.herokuapp.com']
 ALLOWED_HOSTS = ['*']
@@ -181,22 +181,13 @@ SOCIALACCOUNT_PROVIDERS = {
         },
          
     },
-    #  'google': {
-    #     'SCOPE': [
-    #         'profile',
-    #         'email',
-    #     ],
-    #     'APP': {
-    #         'client_id': 'b57051e7c7982b2db3a2',
-    #         'secret': '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',
-    #         'key': ''
-    #     },
-     
-    #     'AUTH_PARAMS': {
-    #         'access_type': 'online',
-    #     },
-         
-    # }
+     'github': {
+        'APP': {
+            'client_id': 'b57051e7c7982b2db3a2',
+            'secret': '02d5168f3406c7e50d2afdbb7e4b8f424e6af14f',
+            'key':''
+        }
+    }
 }
 
 ACCOUNT_EMAIL_REQUIRED = True
@@ -214,8 +205,8 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
-# ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_EMAIL_VERIFICATION = "optional"
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+# ACCOUNT_EMAIL_VERIFICATION = "optional"
 
 
 

@@ -19,7 +19,13 @@
       />
       <!-- reveiw user name! -->
 
+      {% if review.name %}
       <div class="text-2xl font-bold mt-4 italic">{{review.name|capfirst}}</div>
+      
+      {% else %}
+      <div class="text-2xl font-bold mt-4 italic">{{'user'|capfirst}}</div>
+
+      {% endif %}
       
       <!-- reveiw text -->
       <p class="mt-8 mb-6 text-2xl italic leading-relaxed center">

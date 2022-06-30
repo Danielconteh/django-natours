@@ -51,26 +51,34 @@
     <div class="mt-[4rem] text-xl ">
         <h2 class="tour_info_guide_header ">Your tour guides</h2>
 
-        <div class="tour_guide_wrapper">
-            <img src="https://media.istockphoto.com/photos/smiling-indian-business-man-working-on-laptop-at-home-office-young-picture-id1307615661?b=1&k=20&m=1307615661&s=170667a&w=0&h=Zp9_27RVS_UdlIm2k8sa8PuutX9K3HTs8xdK0UfKmYk=" alt=" Lead guide
-" class="tour_guide_img md:mr-4" />
-            <span class="tour_guide text-xl md:text-2xl md:mr-8">Lead guide</span>
-            <span>Steven Miller</span>
-        </div>
 
-        <div class="tour_guide_wrapper pt-8">
-            <img src="https://media.istockphoto.com/photos/smiling-indian-business-man-working-on-laptop-at-home-office-young-picture-id1307615661?b=1&k=20&m=1307615661&s=170667a&w=0&h=Zp9_27RVS_UdlIm2k8sa8PuutX9K3HTs8xdK0UfKmYk=" alt=" Tour guide
+        {% for guide in tour_guide %}
+
+        <div class="tour_guide_wrapper {% if forloop.counter == 2 %}pt-4 {% elif forloop.counter == 3  %} mb-[5rem]
+        {% endif %}">
+            <img src="{{guide.img.url}}" alt=" Lead guide"class="tour_guide_img md:mr-4" />
+            <span class="tour_guide text-xl md:text-2xl md:mr-8">Lead guide</span>
+            <span class="capitalize">{{guide.name}}</span>
+        </div>
+        
+        {% endfor %}
+
+       
+</div> 
+</div>
+
+
+ {% comment %} <div class="tour_guide_wrapper pt-8">
+            <img src="https://media.istockphoto.com/photos/african-mid-woman-using-smartphone-at-home-picture-id1319763415?b=1&k=20&m=1319763415&s=170667a&w=0&h=J9vN7w33elL-hY1CogyTB2BzzKpiEbmPqTdsQ6fBbuI=" alt=" Tour guide
 " class="tour_guide_img md:mr-4" />
             <span class="tour_guide text-xl md:text-2xl md:mr-8">Tour guide</span>
             <span class="">Lisa Brown</span>
         </div>
 
         <div class="tour_guide_wrapper pt-8 mb-[5rem] ">
-            <img src="https://media.istockphoto.com/photos/smiling-indian-business-man-working-on-laptop-at-home-office-young-picture-id1307615661?b=1&k=20&m=1307615661&s=170667a&w=0&h=Zp9_27RVS_UdlIm2k8sa8PuutX9K3HTs8xdK0UfKmYk=" alt=" Tour guide
+            <img src="https://images.unsplash.com/flagged/photo-1573740144655-bbb6e88fb18a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt=" Tour guide
 " class="tour_guide_img md:mr-4" />
             <span class="tour_guide text-xl md:text-2xl md:mr-8">Tour guide</span>
             <span>Max Smith</span>
         </div>
-    </div>
-
-</div>
+    {% endcomment %}

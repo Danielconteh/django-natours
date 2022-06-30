@@ -2,7 +2,7 @@
   class="mt-[-11rem] lg:mt-[-9rem] bg-[#fcfcfc] pt-[4rem] grid grid-cols-[1fr,1fr]"
 >
   <!-- CONTAIN QUICK FACT & TOUR GUIDES -->
-  {% include "tour/tour_info.html" with data=data next_date=next_date %}
+  {% include "tour/tour_info.html" with data=data next_date=next_date tour_guide=tour_guide %}
   <!-- CONTAIN QUICK FACT & TOUR GUIDES -->
 
   <!-- CONTAIN TOUR DES -->
@@ -90,7 +90,6 @@
   let data = JSON.parse(json) //map data from collected from database
 
 
-  console.log(data)
 
   //resuable string formate
   const stringFormater = (strData) =>

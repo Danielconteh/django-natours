@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -63,18 +64,6 @@ class Images(models.Model):
 
 
 
-class User_Image(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    photo =  models.ImageField(upload_to = 'Users', null=True, blank=True)
-    image = models.URLField(max_length=1000, null=True, blank=True)
-
-# , default=""
-
-
-
-
-
-
 
 # POST REVIEW DATA class EmailField(max_length=254, **options)¶
 
@@ -83,11 +72,23 @@ class Review(models.Model):
     user = models.EmailField(blank=True,null=True)
     review = models.TextField(blank=True, null=True)
     rating = models.DecimalField(max_digits=5, blank=True, decimal_places=1, null=True)
+    user_img = models.URLField(max_length=2000, blank=True,null=True)
     time_posted = models.TextField(blank=True, null=True)
+    
+    def __str__(self) -> str:
+        return self.tour + '-' + self.user
     
     class Meta:
         unique_together = ('tour', 'user',)
     
+class Tour_Guide(models.Model):
+    name = models.CharField(blank=True, null=True,max_length=200)
+    img = models.FileField(upload_to='tour_guide/',blank=True, null=True)
+    creadAt = models.DateTimeField(auto_now=True)
+
+    
+     
+
 
 
 # WORKING API KEY => SECRET
