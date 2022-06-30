@@ -29,7 +29,7 @@ DEBUG = False
 
 # ALLOWED_HOSTS = ['django-natour.herokuapp.com']
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS=['https://django-natour.herokuapp.com/']
+ALLOWED_HOSTS=['django-natour.herokuapp.com/']
 
 
 # Application definition
