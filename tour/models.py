@@ -86,7 +86,17 @@ class Tour_Guide(models.Model):
     img = models.FileField(upload_to='tour_guide/',blank=True, null=True)
     creadAt = models.DateTimeField(auto_now=True)
 
+
+
+class Booked_Tour(models.Model):
+    user_email = models.CharField(blank=True, null=True,max_length=500)
+    tour_slug = models.SlugField()
     
+    def __str__(self) -> str:
+        return self.user_email + '-' + self.tour_slug
+    
+    class Meta:
+        unique_together = ('user_email', 'tour_slug',)
      
 
 

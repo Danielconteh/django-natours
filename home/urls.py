@@ -33,8 +33,7 @@ urlpatterns = [
     # path('accounts/google/login/', TemplateView.as_view(template_name='test.html') ),
     path('accounts/', include('allauth.urls')),
 
-    path('cancel/', TemplateView.as_view(template_name='cancel.html') , name='cancel'),
-    path('success/', TemplateView.as_view(template_name='success.html') , name='success'),
+   
     path('', include('tour.urls')),
 
 ] 

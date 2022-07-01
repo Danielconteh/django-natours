@@ -6,8 +6,9 @@ from django.conf import settings
 from django.dispatch import receiver
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from requests import request
 # from django.views import View
-from .models import Tour, Images, Review, Tour_Guide
+from .models import Tour, Images, Review, Tour_Guide, Booked_Tour
 import datetime
 import random
 #########################################################
@@ -219,6 +220,14 @@ def stripe_webhook(request):
       session = event['data']['object']
       customer_email = session['metadata']['email']
       customer_book_tour = session['metadata']['tour_slug']
+      if customer_email and customer_book_tour:
+          data = Booked_Tour(user_email=customer_email, tour_slug=customer_book_tour)
+          try:
+              data.save()
+          except:
+              return HttpResponse(404)
+          
+          
       
 # send_mail(
 #         subject="Here is your product",
@@ -228,27 +237,15 @@ def stripe_webhook(request):
 #         )
       
       return JsonResponse({'customer_email':customer_email, 'customer_book_tour':customer_book_tour})
-  
-#    "metadata": {
-#       "tour_slug": "the-sea-explorer",
-#       "price": "497",
-#       "email": "contehdaniel1995@gmail.com"
-#     },
 
-      customer_email = session["customer_details"]["email"]
-    #   product_id = session["metadata"]["product_id"]
 
-    #   product = Product.objects.get(id=product_id)
 
-  # Passed signature verification
-#   return HttpResponse(status=200)
+def booked_secessful(request):
     
+    data = Booked_Tour.objects.filter(user_email=request.user.email)
+    print(data)
     
-    
-    
-    
-    
-    
+    return render(request, 'booked_sucess.html')
     
     
     
