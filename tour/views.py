@@ -253,6 +253,9 @@ def booked_secessful(request):
     for item in data:
         print(item)
         tour = Tour.objects.filter(slug=item.tour_slug)
+    if tour:
+       tour[0].startDates = datetime.datetime.fromisoformat(tour[0].startDates[0].split('T')[0]).strftime("%B %Y")
+        
     
     return render(request, 'booked_sucess.html',{'data':tour})
     
