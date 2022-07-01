@@ -1675,9 +1675,10 @@ textarea:focus {
   display: flex;
   flex-wrap: wrap;
   padding: 1rem;
-  margin-bottom:3rem;
   padding-top:1.5rem;
   margin: 0 auto;
+  margin-bottom:3rem;
+  gap: 3rem;
 }
 
 .hover\:border-slate-400:hover {
