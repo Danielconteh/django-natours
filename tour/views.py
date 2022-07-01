@@ -16,6 +16,8 @@ from django.views.decorators.csrf import csrf_exempt
 import stripe
 from django.contrib import messages
 from django.db.models import Avg
+from django.core.mail import send_mail
+
 
 
 
@@ -215,9 +217,25 @@ def stripe_webhook(request):
  # Handle the checkout.session.completed event
   if event['type'] == 'checkout.session.completed':
       session = event['data']['object']
-      return JsonResponse({'session':session})
+      customer_email = session['metadata']['email']
+      customer_book_tour = session['metadata']['tour_slug']
+      
+# send_mail(
+#         subject="Here is your product",
+#         message=f"Thanks for your purchase. Here is the product you ordered. The URL is",
+#         recipient_list=[customer_email],
+#         from_email="matt@test.com"
+#         )
+      
+      return JsonResponse({'customer_email':customer_email, 'customer_book_tour':customer_book_tour})
+  
+#    "metadata": {
+#       "tour_slug": "the-sea-explorer",
+#       "price": "497",
+#       "email": "contehdaniel1995@gmail.com"
+#     },
 
-    #   customer_email = session["customer_details"]["email"]
+      customer_email = session["customer_details"]["email"]
     #   product_id = session["metadata"]["product_id"]
 
     #   product = Product.objects.get(id=product_id)
