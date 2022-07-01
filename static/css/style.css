@@ -1672,14 +1672,17 @@ textarea:focus {
 }
 
 .booked_tour_card{
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
+  justify-content: center; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  gap: 4rem;
   padding: 1rem;
   padding-top:1.5rem;
-  margin: 0 auto;
   margin-bottom:3rem;
-  gap: 4rem;
-  justify-content: center;
+  margin: 0 auto;
 }
 
 .hover\:border-slate-400:hover {

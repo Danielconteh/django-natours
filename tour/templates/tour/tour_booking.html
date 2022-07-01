@@ -1,6 +1,14 @@
 <div class="booking_container">
     <div class="skew-y-[4deg] bg-slate-300 shadow-xl rounded-md md:rounded-xl p-6 max-w-[150rem] h-[20rem] relative flex items-center overflow-x-hidden">
 
+        {% for message in messages %} 
+
+        {% if message.tags == 'info' %}
+        <div id="message" data-message="{{ message }}" class="pop_up text-center p-8 mb-6 text-4xl bg-gradient-to-r from-purple-500 to-pink-500 capitalize">{{ message }}</div> 
+        {% endif %}
+
+      {% endfor %}
+
         {% for img in imgs %} 
         
         {% if forloop.counter == 1%}
