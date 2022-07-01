@@ -1684,7 +1684,7 @@ textarea:focus {
 
 /* 700px */
 
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 43.75em) {
   .booked_tour_card{
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
@@ -1693,7 +1693,7 @@ textarea:focus {
 
 /* 1100px */
 
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 68.75em) {
   .booked_tour_card{
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
