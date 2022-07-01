@@ -91,13 +91,17 @@
              <span class="font-bold">{{tour.ratingAvg}}</span>
               <span class="text-[#999]">rating ({{tour.ratingQuantity}})</span>
              </p>
-             <a class="row-start-1 row-end-3 justify-self-end self-center py-5 px-12 text-white bg-gradient-to-r from-purple-500 to-pink-500 
-             rounded-[10rem]
-             visited: inline-block uppercase no-underline relative font-light border-none cursor-pointer transition-all" href="/{{tour.slug}}">Details</a>
 
-             <a class="row-start-1 row-end-3 justify-self-end self-center py-5 px-12 text-white bg-gradient-to-r from-purple-500 to-pink-500 
-             rounded-[10rem]
-             visited: inline-block uppercase no-underline relative font-light border-none cursor-pointer transition-all" href="/{{tour.slug}}">Delete</a>
+             {% comment %} detail && delete {% endcomment %}
+              <div>
+                <a class="row-start-1 row-end-3 justify-self-end self-center py-5 px-12 text-white bg-gradient-to-r from-purple-500 to-pink-500 
+                rounded-[10rem]
+                visited: inline-block uppercase no-underline relative font-light border-none cursor-pointer transition-all" href="/{{tour.slug}}">Details</a>
+   
+                <a class="row-start-1 row-end-3 justify-self-end self-center py-5 px-12 text-white bg-gradient-to-r from-purple-500 to-pink-500 
+                rounded-[10rem]
+                visited: inline-block uppercase no-underline relative font-light border-none cursor-pointer transition-all" href="/{{tour.slug}}">Delete</a>
+              </div>
        </div>
            
    <!-- =================== end of section 3==========================    -->

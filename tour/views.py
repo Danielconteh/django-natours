@@ -260,7 +260,9 @@ def booked_secessful(request):
     return render(request, 'booked_sucess.html',{'data':tour})
     
     
-    
+def delete_booked_tour(request,tour_slug):
+    pass
+      
     
     
     
