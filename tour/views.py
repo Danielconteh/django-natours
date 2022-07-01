@@ -171,8 +171,8 @@ def CreateCheckoutSessionView(request, tour_slug):
          return redirect('/{}'.format(tour_slug))
         
     
-    YOUR_DOMAIN = 'http://127.0.0.1:8000'
-    # 'https://django-natours.herokuapp.com'
+    YOUR_DOMAIN = 'https://django-natours.herokuapp.com'
+    # 'http://127.0.0.1:8000'
     
     checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
