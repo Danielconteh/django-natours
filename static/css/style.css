@@ -1673,7 +1673,7 @@ textarea:focus {
 
 .booked_tour_card{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, 1fr);
   justify-content: center;
   gap: 4rem;
   padding: 1rem;
