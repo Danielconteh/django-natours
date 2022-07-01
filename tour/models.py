@@ -93,7 +93,7 @@ class Booked_Tour(models.Model):
     tour_slug = models.SlugField(blank=True, null=True)
     
     def __str__(self) -> str:
-        return self.user_email + '-' + self.tour_slug
+        return self.user_email + ' ------ ' + self.tour_slug
     
     class Meta:
         unique_together = ('user_email', 'tour_slug',)
