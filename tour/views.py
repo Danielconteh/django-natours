@@ -194,7 +194,7 @@ def CreateCheckoutSessionView(request, tour_slug):
             },
             mode='payment',
             success_url=YOUR_DOMAIN + '/success/',
-            cancel_url=YOUR_DOMAIN + '/cancel/',
+            cancel_url= YOUR_DOMAIN,
         )
     return redirect(checkout_session.url, code=303)
 
