@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 import json
 from django.conf import settings
 from django.dispatch import receiver
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 # from django.views import View
 from .models import Tour, Images, Review, Tour_Guide
@@ -49,6 +49,7 @@ def single_tour(request, tour_slug):
     # try: data = Tour.objects.get(slug=tour_slug)
     # except ObjectDoesNotExist: return redirect('home')
     data = get_object_or_404(Tour,slug=tour_slug)
+    
 
     next_date = datetime.datetime.fromisoformat(data.startDates[0].split('T')[0]).strftime("%B %Y")
 
@@ -74,7 +75,7 @@ def single_tour(request, tour_slug):
     
     # ADD REVIEWS TO TAST!
     review_tour = Review.objects.filter(tour=tour_slug)
-    print("==========================")
+    
     if review_tour.exists():
         for index,_ in enumerate(review_tour):
             review_user = User.objects.filter(email=review_tour[index].user) 
@@ -86,7 +87,6 @@ def single_tour(request, tour_slug):
            
     # updating data ratingAvg for any single tour  [no rating yet!]
      # updating data ratingAvg for any single tour  [no rating yet!]
-    print()
     if type(review_tour.aggregate(Avg('rating'))['rating__avg']) is type(None): 
         data.ratingAvg = 0
         data.save()
@@ -152,60 +152,44 @@ def Review_model(request, review_slug):
 
 
 
-
-
-
-
-
-
-
 # CHECKOUT SESSION
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def CreateCheckoutSessionView(request, tour_slug):
     if not request.user.is_authenticated:
         return redirect('tour')
         
-    data = Tour.objects.filter(slug=tour_slug)[0]
+    data = Tour.objects.filter(slug=tour_slug)[0] 
     
-    print(data)
+    YOUR_DOMAIN = 'https://django-natours.herokuapp.com'
     
-    # if not data.exists():
-    #     return HttpResponse('not found!!')
-        
-    print("============================")
-  
-    
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-    YOUR_DOMAIN = 'http://localhost:8000/'
     checkout_session = stripe.checkout.Session.create(
-        line_items=[
-            {
-                'price_data': {
-                    'currency': 'usd',
-                    'unit_amount': data.price * 100,
-                    'product_data': {
-                        'name': data.name,
-                        
-                        # 'images': ['https://i.imgur.com/EHyR2nP.png'] {{product.coverImage}},
+            payment_method_types=['card'],
+            line_items=[
+                {
+                    'price_data': {
+                        'currency': 'usd',
+                        'unit_amount': data.price *10,
+                        'product_data': {
+                            'name': data.name,
+                            'images': [data.coverImage.url],
+                        },
                     },
+                    'quantity': 1,
                 },
-                'quantity': 1,
-            },
-        ],
-         metadata={
+            ],
+            metadata={
                 "tour_slug": data.slug,
                 "price": data.price,
                 "email": request.user.email,
-                
+             
             },
-        mode='payment',
-        success_url= YOUR_DOMAIN + 'success/',
-        cancel_url= YOUR_DOMAIN + 'cancel/',
-    )
+            mode='payment',
+            success_url=YOUR_DOMAIN + '/success/',
+            cancel_url=YOUR_DOMAIN + '/cancel/',
+        )
     return redirect(checkout_session.url, code=303)
-
-
-
 
 
 # STRIPE stripe_webhook
@@ -232,7 +216,7 @@ def stripe_webhook(request):
  # Handle the checkout.session.completed event
   if event['type'] == 'checkout.session.completed':
       session = event['data']['object']
-      print(session)
+      return JsonResponse(session=session)
 
     #   customer_email = session["customer_details"]["email"]
     #   product_id = session["metadata"]["product_id"]
@@ -240,7 +224,7 @@ def stripe_webhook(request):
     #   product = Product.objects.get(id=product_id)
 
   # Passed signature verification
-  return HttpResponse(status=200)
+#   return HttpResponse(status=200)
     
     
     
