@@ -1,5 +1,6 @@
 {% extends "base.html" %} 
 
+{% block title %}DjangoNatours | {{Booked-tour}} {% endblock%}
 
 {% block content %}
 
@@ -99,7 +100,7 @@
           
           {% comment %} detail && delete {% endcomment %}
           
-                <a class="justify-self-end self-center text-white bg-gradient-to-r from-purple-500 to-pink-500 tracking-wider rounded-[10rem] uppercase no-underline font-light border-none cursor-pointer transition-all" href=" {{tour.slug}}" style="grid-column: 2/3;
+                <a class="justify-self-end self-center text-white bg-gradient-to-r from-purple-500 to-pink-500 tracking-wider rounded-[10rem] uppercase no-underline font-light border-none cursor-pointer transition-all" href="/{{tour.slug}}" style="grid-column: 2/3;
                 grid-row: 1/2;
                 padding:1rem 1.5rem;
                 ">Details</a>

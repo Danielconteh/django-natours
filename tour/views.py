@@ -260,9 +260,9 @@ def booked_secessful(request):
     return render(request, 'booked_sucess.html',{'data':tour})
     
     
-def delete_booked_tour(request,tour_slug):
+def delete_booked_tour(request,delete_slug):
     if not request.user.is_authenticated: return redirect('home')
-    data = Booked_Tour.objects.filter(tour_slug=tour_slug)
+    data = Booked_Tour.objects.filter(tour_slug=delete_slug)
     
     if not data.exists(): return redirect('/')
     data.delete()

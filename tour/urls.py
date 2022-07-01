@@ -1,7 +1,7 @@
 from django.urls import path
 from . views import tour, single_tour,CreateCheckoutSessionView, stripe_webhook,Review_model,booked_secessful, delete_booked_tour
                     
-
+# /delete_booked_tour/{{tour.slug}}
 app_name = 'tour'
 urlpatterns = [
     
@@ -10,7 +10,7 @@ urlpatterns = [
      
      
     path('success/', booked_secessful , name='success'),
-    path('delete_booked_tour/<slug:review_slug>', delete_booked_tour , name='delete_booked_tour'),
+    path('delete_booked_tour/<slug:delete_slug>', delete_booked_tour , name='delete_booking'),
     
     path('review/<slug:review_slug>', Review_model, name='review'),
      
