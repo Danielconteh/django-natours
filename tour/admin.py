@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Location, Tour,Images,Review,Tour_Guide
+from .models import Location, Tour,Images,Review,Tour_Guide,Booked_Tour
 
  
 class ImagesAdmin(admin.StackedInline):
@@ -18,6 +18,9 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Location)
 admin.site.register(Images)
 admin.site.register(Review)
-admin.site.register(Tour_Guide)
+admin.site.register(Tour_Guide) 
+admin.site.register(Booked_Tour) 
+
+
 
 

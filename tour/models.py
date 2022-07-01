@@ -90,7 +90,7 @@ class Tour_Guide(models.Model):
 
 class Booked_Tour(models.Model):
     user_email = models.CharField(blank=True, null=True,max_length=500)
-    tour_slug = models.SlugField()
+    tour_slug = models.SlugField(blank=True, null=True)
     
     def __str__(self) -> str:
         return self.user_email + '-' + self.tour_slug
