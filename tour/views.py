@@ -1,3 +1,4 @@
+from xmlrpc.client import boolean
 from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -245,17 +246,18 @@ def stripe_webhook(request):
 
 
 def booked_secessful(request):
+    print("sucessfull  ===  !!!!!!!!!!")
     if not request.user.is_authenticated: return redirect('/accounts/login/')
     
-    tour = None
+    tour = []
     data = Booked_Tour.objects.filter(user_email=request.user.email)
-        
-    for item in data:
-        if item:
-            tour = Tour.objects.filter(slug=item.tour_slug)
+    
+    if data.exists():
+        for item in data:
+            if item:
+                tour = Tour.objects.filter(slug=item.tour_slug)
     if tour:
        tour[0].startDates = datetime.datetime.fromisoformat(tour[0].startDates[0].split('T')[0]).strftime("%B %Y")
-        
     
     return render(request, 'booked_sucess.html',{'data':tour})
     
