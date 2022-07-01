@@ -212,11 +212,10 @@ def stripe_webhook(request):
     return HttpResponse(status=400)
 
 
-
  # Handle the checkout.session.completed event
   if event['type'] == 'checkout.session.completed':
       session = event['data']['object']
-      return JsonResponse(session=session)
+      return JsonResponse({'session':session})
 
     #   customer_email = session["customer_details"]["email"]
     #   product_id = session["metadata"]["product_id"]

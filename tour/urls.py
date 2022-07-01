@@ -6,7 +6,7 @@ from . views import tour, single_tour,CreateCheckoutSessionView, stripe_webhook,
 app_name = 'tour'
 urlpatterns = [
     path('', tour, name='home'),
-     path('webhooks/stripe', stripe_webhook, name='stripe-webhook'),
+     path('webhooks/stripe/', stripe_webhook, name='stripe-webhook'),
      path('review/<slug:review_slug>', Review_model, name='review'),
      
     path('create-checkout-session/<slug:tour_slug>', CreateCheckoutSessionView, name='create-checkout-session'),
