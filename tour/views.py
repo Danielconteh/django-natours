@@ -164,7 +164,7 @@ def CreateCheckoutSessionView(request, tour_slug):
         
     data = Tour.objects.filter(slug=tour_slug)[0] 
     
-    user_exit = Booked_Tour.objects.filter(Q(email=request.user.email) &  Q(tour_slug=tour_slug))
+    user_exit = Booked_Tour.objects.filter(Q(user_email=request.user.email) &  Q(tour_slug=tour_slug))
     
     if user_exit.exists():
          messages.info(request, 'you have booked this tour!!, please book another one!')
