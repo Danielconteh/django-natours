@@ -281,3 +281,13 @@ body {
   white-space: nowrap;
 }
 
+
+
+.booked_tour_card{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  margin-bottom:3rem; 
+  padding-top:1.5rem;
+
+} 
+
