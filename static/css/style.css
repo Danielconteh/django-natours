@@ -1679,6 +1679,7 @@ textarea:focus {
   margin: 0 auto;
   margin-bottom:3rem;
   gap: 3rem;
+  text-align: center;
 }
 
 .hover\:border-slate-400:hover {
