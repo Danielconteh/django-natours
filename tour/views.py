@@ -171,7 +171,8 @@ def CreateCheckoutSessionView(request, tour_slug):
          return redirect('/{}'.format(tour_slug))
         
     
-    YOUR_DOMAIN = 'https://django-natours.herokuapp.com'
+    YOUR_DOMAIN = 'http://127.0.0.1:8000'
+    # 'https://django-natours.herokuapp.com'
     
     checkout_session = stripe.checkout.Session.create(
             payment_method_types=['card'],
@@ -247,12 +248,13 @@ def stripe_webhook(request):
 
 
 def booked_secessful(request):
-    
+    tour = None
     data = Booked_Tour.objects.filter(user_email=request.user.email)
     for item in data:
+        print(item)
         tour = Tour.objects.filter(slug=item.tour_slug)
     
-    return render(request, 'booked_sucess.html',{'tour':tour})
+    return render(request, 'booked_sucess.html',{'data':tour})
     
     
     
