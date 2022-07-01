@@ -268,6 +268,7 @@ def delete_booked_tour(request,delete_slug):
     
     if not data.exists(): return redirect('/')
     data.delete()
+    return redirect('/success/')
         
       
     
