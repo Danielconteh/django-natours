@@ -115,11 +115,8 @@ def single_tour(request, tour_slug):
 
 # REVIEW LOGIC
 def Review_model(request, review_slug):
-    if not request.user.is_authenticated:
-        messages.error(request, 'user must be login to write a review!')
-        return redirect('/{}'.format(request.build_absolute_uri().split('/')[-1]))
-
-        
+    if not request.user.is_authenticated: return redirect('/accounts/login/')
+  
     if not request.POST['review']:
         messages.warning(request, 'please write something!')
         return redirect('/{}'.format(request.build_absolute_uri().split('/')[-1]))
@@ -132,7 +129,7 @@ def Review_model(request, review_slug):
  
 
     rating = request.POST['rating'] or 0
-    print(rating)
+    
     data = Review(tour=review_slug,user=request.user.email,review=request.POST['review'],
                   rating=float(rating),user_img=request.user.socialaccount_set.all()[0].extra_data['avatar_url'], time_posted=datetime.datetime.now())
     try:
@@ -160,7 +157,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def CreateCheckoutSessionView(request, tour_slug):
     if not request.user.is_authenticated:
-        return redirect('tour')
+        return redirect('/accounts/login/')
         
     data = Tour.objects.filter(slug=tour_slug)[0] 
     
@@ -216,10 +213,10 @@ def stripe_webhook(request):
     )
   except ValueError as e:
     # Invalid payload
-    return HttpResponse(status=400)
+    return HttpResponse(status=404)
   except stripe.error.SignatureVerificationError as e:
     # Invalid signature
-    return HttpResponse(status=400)
+    return HttpResponse(status=404)
 
 
  # Handle the checkout.session.completed event
@@ -248,11 +245,14 @@ def stripe_webhook(request):
 
 
 def booked_secessful(request):
+    if not request.user.is_authenticated: return redirect('/accounts/login/')
+    
     tour = None
     data = Booked_Tour.objects.filter(user_email=request.user.email)
+        
     for item in data:
-        print(item)
-        tour = Tour.objects.filter(slug=item.tour_slug)
+        if item:
+            tour = Tour.objects.filter(slug=item.tour_slug)
     if tour:
        tour[0].startDates = datetime.datetime.fromisoformat(tour[0].startDates[0].split('T')[0]).strftime("%B %Y")
         
@@ -261,7 +261,12 @@ def booked_secessful(request):
     
     
 def delete_booked_tour(request,tour_slug):
-    pass
+    if not request.user.is_authenticated: return redirect('home')
+    data = Booked_Tour.objects.filter(tour_slug=tour_slug)
+    
+    if not data.exists(): return redirect('/')
+    data.delete()
+        
       
     
     

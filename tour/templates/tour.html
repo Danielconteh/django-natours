@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="py-5 text-2xl text-center tracking-widest uppercase bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent" style="font-weight:bold;">All Tours</div>
+<div class="text-4xl text-center tracking-widest uppercase bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent" style="font-weight:bold; padding:4rem 0rem">All Tours</div>
 
 <div
   style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom:3rem; padding-top:1.5rem;"
@@ -102,19 +102,24 @@
 
 
 
-      <div class="bg-[#f7f7f7] p-8 text-xl md:text-2xl border-t border-[#f1f1f1] grid grid-cols-[auto,1fr] gap-4 mt-auto">
-        <p>
-          <span class="font-bold">$ {{ tour.price|stringformat:".2f" }}</span>    
+      <div class="bg-[#f7f7f7] p-8 text-xl md:text-2xl border-t border-[#f1f1f1] grid grid-cols-[auto,1fr] items-center gap-4 mt-auto">
 
-           <span class="text-[#999]">per person</span>
+          <p>
+            <span class="font-bold">$ {{ tour.price|stringformat:".2f" }}</span>    
+            <span class="text-[#999]">per person</span>
           </p>
+
           <p class="row-start-2 row-end-3">
             <span class="font-bold">{{tour.ratingAvg}}</span>
              <span class="text-[#999]">rating ({{tour.ratingQuantity}})</span>
-            </p>
-            <a class="row-start-1 row-end-3 justify-self-end self-center py-5 px-12 text-white bg-gradient-to-r from-purple-500 to-pink-500 
-            rounded-[10rem]
-            visited: inline-block uppercase no-underline relative font-light border-none cursor-pointer transition-all" href=" {{tour.slug}}">Details</a>
+          </p>
+
+            <a class="justify-self-end self-center text-white bg-gradient-to-r from-purple-500 to-pink-500 tracking-wider
+            rounded-[10rem] uppercase no-underline font-light border-none cursor-pointer transition-all" href=" {{tour.slug}}" style="grid-column: 2/3;
+            grid-row: 1/2;
+            padding:1rem 1.5rem;
+            ">Details</a>
+
       </div>
           
   <!-- =================== end of section 3==========================    -->

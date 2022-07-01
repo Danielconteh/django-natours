@@ -1,14 +1,17 @@
 from django.urls import path
-from django.views.generic import TemplateView
-from . views import tour, single_tour,CreateCheckoutSessionView, stripe_webhook,Review_model,booked_secessful
+from . views import tour, single_tour,CreateCheckoutSessionView, stripe_webhook,Review_model,booked_secessful, delete_booked_tour
                     
 
 app_name = 'tour'
 urlpatterns = [
+    
     path('', tour, name='home'),
-     path('webhooks/stripe/', stripe_webhook, name='stripe-webhook'),
-    path('cancel/', TemplateView.as_view(template_name='cancel.html') , name='cancel'),
+    path('webhooks/stripe/', stripe_webhook, name='stripe-webhook'),
+     
+     
     path('success/', booked_secessful , name='success'),
+    path('delete_booked_tour/<slug:review_slug>', delete_booked_tour , name='delete_booked_tour'),
+    
     path('review/<slug:review_slug>', Review_model, name='review'),
      
     path('create-checkout-session/<slug:tour_slug>', CreateCheckoutSessionView, name='create-checkout-session'),
