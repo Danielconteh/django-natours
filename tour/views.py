@@ -245,7 +245,7 @@ def booked_secessful(request):
     data = Booked_Tour.objects.filter(user_email=request.user.email)
     print(data)
     
-    return render(request, 'booked_sucess.html')
+    return render(request, 'booked_sucess.html', {'data':data})
     
     
     
