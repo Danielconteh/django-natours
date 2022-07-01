@@ -1672,9 +1672,6 @@ textarea:focus {
 }
 
 .booked_tour_card{
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
@@ -1683,6 +1680,26 @@ textarea:focus {
   padding-top:1.5rem;
   margin-bottom:3rem;
   margin: 0 auto;
+}
+
+/* 700px */
+
+@media screen and (max-width: 50em) {
+  .booked_tour_card{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* 1100px */
+
+@media screen and (max-width: 50em) {
+  .booked_tour_card{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 0rem;
+    padding-top: 1.5rem;
+  }
 }
 
 .hover\:border-slate-400:hover {
@@ -1855,5 +1872,5 @@ textarea:focus {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }
-} 
+}
 
