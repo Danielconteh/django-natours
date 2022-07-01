@@ -16,7 +16,7 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt 
 import stripe
 from django.contrib import messages
-from django.db.models import Avg
+from django.db.models import Avg, Q
 from django.core.mail import send_mail
 
 
@@ -139,7 +139,6 @@ def Review_model(request, review_slug):
         data.save()
     except IntegrityError:
         messages.warning(request, 'you have already write review for  this tour!!')
-        print('hello')
         return redirect('/{}'.format(request.build_absolute_uri().split('/')[-1]))
     
     return redirect('/{}'.format(request.build_absolute_uri().split('/')[-1]))
@@ -164,6 +163,13 @@ def CreateCheckoutSessionView(request, tour_slug):
         return redirect('tour')
         
     data = Tour.objects.filter(slug=tour_slug)[0] 
+    
+    user_exit = Booked_Tour.objects.filter(Q(email=request.user.email) &  Q(tour_slug=tour_slug))
+    
+    if user_exit.exists():
+         messages.info(request, 'you have booked this tour!!, please book another one!')
+         return redirect('/{}'.format(tour_slug))
+        
     
     YOUR_DOMAIN = 'https://django-natours.herokuapp.com'
     
@@ -243,9 +249,10 @@ def stripe_webhook(request):
 def booked_secessful(request):
     
     data = Booked_Tour.objects.filter(user_email=request.user.email)
-    print(data)
+    for item in data:
+        tour = Tour.objects.filter(slug=item.tour_slug)
     
-    return render(request, 'booked_sucess.html',{'data':data})
+    return render(request, 'booked_sucess.html',{'tour':tour})
     
     
     
