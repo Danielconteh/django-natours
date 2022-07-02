@@ -76,6 +76,8 @@
   const el = document.querySelector('#map')
   const scroll = document.querySelector("#scroll-container")
   const scroll_message = document.querySelector("#message")
+  const scroll_message1 = document.querySelector("#message1")
+
 
   {% comment %} STAR RATING... {% endcomment %}
 
@@ -166,6 +168,14 @@
     scroll_message.textContent && window.scroll(0,findPos(scroll));
   }
 
+
+  if(scroll_message1){
+    scroll_message1.textContent = '';
+    alert(scroll_message1?.dataset?.message)
+    //scroll_message1.textContent = scroll_message1?.dataset?.message;
+
+    //data-message1
+  }
 
 
 
