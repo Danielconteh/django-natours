@@ -171,7 +171,7 @@
 
   if(scroll_message1){
     scroll_message1.textContent = '';
-    body.addEventListener("load", ()=>{
+    window.addEventListener("load", ()=>{
       alert(scroll_message1?.dataset?.messages || 'You have booked this tour!, please book another one!')
     })
     //scroll_message1.textContent = scroll_message1?.dataset?.message;
