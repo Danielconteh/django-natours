@@ -171,7 +171,9 @@
 
   if(scroll_message1){
     scroll_message1.textContent = '';
-    alert(scroll_message1?.dataset?.message)
+    scroll_message1.addEventListener("load", ()=>{
+      alert(scroll_message1?.dataset?.messages)
+    })
     //scroll_message1.textContent = scroll_message1?.dataset?.message;
 
     //data-message1
