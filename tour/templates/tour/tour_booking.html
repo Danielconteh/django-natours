@@ -4,7 +4,7 @@
        {% for message in messages %} 
 
         {% if message.tags == 'info' %} 
-        <div id="message" data-message="{{ message }}" class="pop_up skew-y-[4deg] text-center p-8 mb-6 text-4xl text-white capitalize absolute z-10" style="top:2rem; right:0rem;left:0; width:100%; padding:1.5rem .5rem">{{ message }}</div> 
+        <div id="message" data-message="{{ message }}" class="pop_up skew-y-[4deg] text-center p-8 mb-6 text-4xl bg-gradient-to-r from-purple-500 to-pink-500 capitalize absolute z-10" style="top:2rem; right:0rem;left:0; width:100%; padding:1.5rem .5rem">{{ message }}</div> 
          {% endif %}
 
       {% endfor %} 
