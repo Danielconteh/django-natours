@@ -34,7 +34,9 @@
         class="ml-3 p-1.5 text-sky-200 no-underline uppercase tracking-widest md:tracking-wide"
        style="margin-left:1rem; font-weight:bold;" >All tours</a
       >
-      <a class="text-sky-200 p-1.5 hidden md:block" href="/">logo</a>
+      <a class="text-sky-200 p-1.5 hidden md:block" href="/">
+      <img  src="{% static 'image/logo.png' %}" alt="Django-Natours" srcset="" style="width: 5rem;">
+      </a>
 
 
       {% if user.is_authenticated %}
@@ -103,7 +105,8 @@
 
     
       <div class="row-start-1 row-end-3 self-center text-center ml-6 md:text-left ml-0">
-        <img src="/img/logo-green.png" alt="Django-Natours" />
+          <img class="text-center"  src="{% static 'image/logo.png' %}" alt="Django-Natours" srcset="" style="width: 5rem; margin:1 auto;">
+
         <span class="tracking-widest capitalize hidden md:block md:text-2xl"
           >built using django</span
         >
