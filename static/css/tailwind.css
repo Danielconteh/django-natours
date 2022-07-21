@@ -317,3 +317,18 @@ body {
 
 
 
+
+
+// How to remove the blue highlight of button on mobile? (https://stackoverflow.com/questions/45049873/how-to-remove-the-blue-highlight-of-button-on-mobiles)
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+
+
+
