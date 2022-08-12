@@ -23,10 +23,26 @@
     .map::-webkit-scrollbar {
       display: none; /* Safari and Chrome */
     }
+ body {
+  scrollbar-width: thin;
+  scrollbar-color: dark;
+   max-width:140rem;
+   margin: 0rem auto;
+}
+
+body::-webkit-scrollbar {
+  width: 7px;
+}
+
+@media screen and (min-width: 87.5em) {
+  body {
+    margin:1rem auto !important;
+  }
+}
 
   </style>
   
-  <body onload="loadAuth();" class="overflow-x-hidden leading-[1.6] text-[#777] md:p-[2rem] ">
+  <body onload="loadAuth();" class="overflow-x-hidden leading-[1.6] text-[#777]">
     {% comment %} header section {% endcomment %}
     <header class="bg-sky-800  py-4 flex justify-between items-center lg:text-3xl relative md:text-2xl" style="width:100%;">
       <a

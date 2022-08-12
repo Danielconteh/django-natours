@@ -21,17 +21,13 @@ html {
   html{
     font-size: ;
   }
-  
+
  } */
 
-body::-webkit-scrollbar {
-  width: 11px;
-}
 
-body {
-  scrollbar-width: thin;
-  scrollbar-color: dark;
-}
+
+
+
 
 /* ==========================
 ===== */
@@ -41,7 +37,7 @@ body {
   .banner_IMG{
     min-height: 75vh;
   }
-  
+
 } */
 
 .tour_info_guide_header {
@@ -83,7 +79,7 @@ body {
     visibility:hidden;
     opacity:0;
     width:100%;
-    font-size:1.5rem;  
+    font-size:1.5rem;
     z-index: 1;
 }
 
@@ -103,21 +99,21 @@ body {
   .textarea{
    width: 80%;
   }
-  
+
  }
 
 @media screen and (max-width: 37.5em) {
  .textarea{
   width: 90%;
  }
- 
+
 }
 
 @media screen and (max-width: 21.875em) {
   .textarea{
    width: 95%;
   }
- 
+
  }
  textarea:focus {
   border:  1px solid red;
@@ -193,7 +189,7 @@ body {
 }
 
 .rating > .review_star:checked ~ label,
-.rating:not(:checked) > label:hover, 
+.rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label{
 	color: #2ce679;
 }
@@ -224,7 +220,7 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
-.card_container::-webkit-scrollbar { 
+.card_container::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
 
@@ -253,8 +249,8 @@ body {
   display: inline-block; */
   /* overflow: hidden; */
 /* } */
-.rating::before { 
-  content: "" 
+.rating::before {
+  content: ""
 }
 
 
@@ -290,27 +286,27 @@ body {
   gap: 4rem;
   padding: 1rem;
   padding-top:1.5rem;
-  margin-bottom:3rem; 
+  margin-bottom:3rem;
   margin: 0 auto;
-  
-} 
+
+}
 /* 700px */
-@media screen and (min-width: 43.75em) { 
+@media screen and (min-width: 43.75em) {
   .booked_tour_card{
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
-  
+
  }
 /* 1100px */
- @media screen and (min-width: 68.75em) { 
+ @media screen and (min-width: 68.75em) {
   .booked_tour_card{
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     padding: 0rem;
     padding-top: 1.5rem;
   }
-  
+
  }
 
 
@@ -319,8 +315,8 @@ body {
 
 
 
-// How to remove the blue highlight of button on mobile? (https://stackoverflow.com/questions/45049873/how-to-remove-the-blue-highlight-of-button-on-mobiles)
-
+/*How to remove the blue highlight of button on mobile? (https://stackoverflow.com/questions/45049873/how-to-remove-the-blue-highlight-of-button-on-mobiles)
+*/
 input,
 textarea,
 button,
@@ -328,6 +324,7 @@ select,
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
+
 
 
 
